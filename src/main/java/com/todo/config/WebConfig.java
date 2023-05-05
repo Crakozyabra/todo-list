@@ -11,6 +11,8 @@ import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
+import java.nio.charset.StandardCharsets;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.todo")
@@ -41,6 +43,7 @@ public class WebConfig {
     @Bean
     public ThymeleafViewResolver viewResolver(){
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+        viewResolver.setCharacterEncoding(StandardCharsets.UTF_8.name());
         viewResolver.setTemplateEngine(templateEngine());
         return viewResolver;
     }
