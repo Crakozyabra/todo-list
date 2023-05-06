@@ -19,7 +19,7 @@ public class Task {
     private Integer id;
 
     @NotBlank
-    @Size(min = 3, max = 128)
+    @Size(min = 3, max = 100)
     private String description;
 
     @Enumerated(EnumType.ORDINAL)

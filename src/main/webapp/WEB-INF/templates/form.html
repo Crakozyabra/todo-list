@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <title>Task form</title>
+  </head>
+  <body>
+    <table border="1">
+      <caption th:text="${task.id == null} ? 'Create' : 'Update'"></caption>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <form action="#" th:action="@{/tasks}" th:object="${task}" method="post">
+          <tr>
+            <td>
+              <div th:text="${task.id}"></div>
+              <input type="hidden" th:field="*{id}"/>
+            </td>
+            <td>
+              <div>
+                <input type="text" th:field="*{description}"/>
+              </div>
+            </td>
+            <td>
+              <select th:field="*{status}">
+                <option th:each="s : ${allStatuses}" th:value="${s}" th:text="${s}"></option>
+              </select>
+            </td>
+            <td>
+              <button type="submit" th:text="${task.id == null} ? 'create' : 'update'"></button>
+            </td>
+        </form>
+      </tbody>
+    </table>
+    <br>
+    <div th:include="descriptionErrors.html"></div>
+  </body>
+</html>

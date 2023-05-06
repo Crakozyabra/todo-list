@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Task list</title>
+    </head>
+    <body>
+            <table border="1">
+                <caption th:text="Tasks"></caption>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="task:${tasks}">
+                        <td th:text="${task.id}"></td>
+                        <td th:text="${task.description}"></td>
+                        <td th:text="${task.status}"></td>
+                        <td>
+                            <button type="submit">
+                                <a th:href="@{/tasks(modifiedTaskId=${task.id})}"
+                                   style="text-decoration: none; color: black">
+                                    update
+                                </a>
+                            </button>
+                        </td>
+                        <td>
+                            <form method="post" action="#" th:action="@{/tasks/{id}(id=${task.id})}">
+                                <button type="submit">delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form action="#" th:action="@{/tasks}" method="get">
+                                <button type="submit">create</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <div th:include="descriptionErrors.html"></div>
+            <th:block th:if="${pagesCount > 1}" th:each="i: ${#numbers.sequence(0, pagesCount-1)}">
+                <a th:href="@{/(pageNum=${i})}" th:if="${currentPageNum == i}"th:text="${i+1}"
+                   style="color: red"></a>
+                <a th:href="@{/(pageNum=${i})}" th:unless="${currentPageNum == i}" th:text="${i+1}"
+                   style="color: blue"></a>
+            </th:block>
+    </body>
+</html>
