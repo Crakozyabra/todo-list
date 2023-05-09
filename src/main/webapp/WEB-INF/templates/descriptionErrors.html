@@ -1,6 +1,6 @@
 <div th:if="${#fields.hasErrors('${task.description}')}" style="color: red; font-weight: bold;">
   <div>
-    Description
+    Description errors:
   </div>
   <ul>
     <li th:each="err : ${#fields.errors('${task.description}')}" th:text="${err}"></li>

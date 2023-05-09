@@ -1,8 +1,6 @@
 package com.todo.domain;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -12,6 +10,8 @@ import javax.validation.constraints.Size;
 @Table(name = "task")
 @Getter @Setter
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class Task {
 
     @Id

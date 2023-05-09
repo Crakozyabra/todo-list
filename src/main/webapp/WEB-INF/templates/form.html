@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <form action="#" th:action="@{/tasks}" th:object="${task}" method="post">
+        <form action="#" th:action="@{/tasks}" th:object="${task}" method="post" name="taskForm">
           <tr>
             <td>
               <div th:text="${task.id}"></div>
