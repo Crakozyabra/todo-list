@@ -2,7 +2,9 @@ version: "3.9"
 
 services:
   server:
-    build: /
+    build: .
+    container_name: "server-with-app-container"
+    image: "server-with-app-image"
     ports:
       - '8080:8080'
     depends_on:
@@ -10,8 +12,10 @@ services:
         condition: service_healthy
 
   db:
-    image: mysql:8.0.32
+    image: mysql:8.0.33
+    container_name: "db-container"
     environment:
+      MYSQL_DATABASE: 'todo'
       MYSQL_ROOT_PASSWORD: 'root'
     ports:
       - '3306:3306'

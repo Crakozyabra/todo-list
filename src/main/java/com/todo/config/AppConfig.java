@@ -35,6 +35,7 @@ public class AppConfig {
         return em;
     }
 
+    // change from localhost to db (service name in the docker-compose.yaml) to running by help of docker compose
     @Bean
     public DataSource dataSource() {
         DataSource dataSource = new DataSource();
